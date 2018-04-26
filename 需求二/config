@@ -1,0 +1,56 @@
+// 說明：以 // 開始的行為註釋
+
+// 注意：
+// 1）以下出現的‘:’為英文冒號，不要與中文冒號混淆。
+// 2) 參數出現順序是隨機的，不一定按照以下順序出現。
+// 3) 以下文字中的數字僅為示例，不要以為各參數的值固定為這些數
+
+// 宿舍樓的初始層數
+FLOOR: 10
+
+// 每層的初始房間數
+ROOM: 20
+
+// 每間房的初始容量（即入住人數）
+CAPACITY: 8
+
+// 學生狀態初始值，依次為：體重、金錢、知識、魅力
+WEIGHT: 120
+MONEY: 10000
+KNOWLEDGE: 60
+CHARM: 70
+
+// 每單位重量食物可以增加的體重
+FOOD_WEIGHT: 3
+// 每單位重量食物的價格
+FOOD_COST: 50
+
+// 每單位時間學習減少的體重
+STUDY_WEIGHT: 1
+// 每單位時間學習增加的知識
+STUDY_KNOWLEDGE: 3
+
+// 每單位時間打工賺取的金錢
+WORK_MONEY: 20
+// 每單位時間工作減少的體重
+WORK_WEIGHT: 3
+
+// 每進行一次吃飯、學習、打工活動後（注意：以下公式計算時FOOD_TAKEN，STUDY_TIME，WORK_TIME可能為零，亦即一條指令中學生未必進行所有這三種活動），學生的狀態變化公式如下 ：
+// 體重增量
+WEIGHT_INC = 2 * FOOD_TAKEN * FOOD_WEIGHT - 0.5 * STUDY_TIME  * STUDY_WEIGHT - 1.5 * WORK_TIME * WORK_WEIGHT
+
+// 金錢增量
+MONEY_INC = 0.8 * WORK_TIME * WORK_MONEY - 1.2 * FOOD_TAKEN * FOOD_COST
+
+// 知識增量
+KNOWLEDGE_INC = 0.6 * STUDY_TIME * STUDY_KNOWLEDGE
+
+// 魅力增量
+// 說明：魅力最多增加到100，但學生還可以繼續從事增加魅力的活動，不算無效指令。
+CHARM_INC = 1.5 * KNOWLEDGE_INC - 0.3 * WEIGHT_INC
+
+// 可否建立戀愛關係的相對魅力差的閾值
+LOVE_THRESHOLD: 0.2
+
+// 第三者插足是否成功的二階魅力差的閾值
+LOVER_CHANGE_THRESHOLD: 1
