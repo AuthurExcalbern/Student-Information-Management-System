@@ -20,7 +20,7 @@ using std::pair;
 bool is(string Template, string Sample);
 
 //从字符串得到数字
-double get_double_num(string s, int& i);
+//double get_double_num(string s, int& i);
 
 //把初始化数据读入结构体
 void read_initData(string s, int& init_data);
